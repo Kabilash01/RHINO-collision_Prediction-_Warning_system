@@ -111,6 +111,7 @@ while cap.isOpened():
         x = 30 + i * 50
         cv2.rectangle(frame, (x, 40), (x + 30, 70), color, -1)
         cv2.putText(frame, f"{risk:.2f}", (x, 90), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 1)
+        cv2.putText(frame, f"Weather: {visibility}", (30, 165), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (200, 255, 255), 1)
 
     # === Bounding Box Overlap Crash Detection (Fallback)
     crash_flag = False
@@ -128,6 +129,7 @@ while cap.isOpened():
         if iou > 0.3:
             crash_flag = True
             print(f"[💥] Overlap CRASH DETECTED! (IoU={iou:.2f})")
+        
 
     # === Final Crash Detection Trigger
     if (forecast[0] > 0.3 and headway < 20.0 and ttc < prt + 1) or crash_flag:
