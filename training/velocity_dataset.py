@@ -3,7 +3,9 @@ import pandas as pd
 from torch.utils.data import Dataset
 from sklearn.preprocessing import MinMaxScaler
 
-class CollisionDataset(Dataset):
+class VelocityDataset(Dataset):
+    """Simple dataset for training the velocity prediction model."""
+
     def __init__(self, csv_file, x_cols=["VSV", "Headway", "VLV"], y_col="Risk", normalize=True):
         self.df = pd.read_csv(csv_file)
         self.x_cols = x_cols
